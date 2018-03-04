@@ -12,6 +12,13 @@ class Blog extends React.Component {
     this.setState({ detailed: !this.state.detailed })
   }
 
+  showRemoveButton = () => {
+    if (this.props.blog.user === undefined || this.props.user === this.props.blog.user.username) {
+      return (<button onClick={ e => this.props.onRemove(this.props.blog._id) }>delete</button>)
+    }
+    return null
+  }
+
   render() {
     const blog = this.props.blog
     const username = blog.user ? blog.user.name : 'anonymous'
@@ -33,7 +40,7 @@ class Blog extends React.Component {
         <li>{blog.url}</li>
         <li>{blog.likes} likes <button onClick={ e => this.props.onLike(blog._id) }>like</button></li>
         <li>added by {username}</li>
-        <button onClick={ e => this.props.onRemove(blog._id) }>delete</button>
+        {this.showRemoveButton()}
       </ul>
       </div>
     )

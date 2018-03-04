@@ -153,6 +153,7 @@ class App extends React.Component {
         addLike={this.addLike}
         removeBlog={this.removeBlog}
         blogs={this.state.blogs}
+        user={this.state.user.username}
       />
     )
 
