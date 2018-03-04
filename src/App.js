@@ -100,7 +100,6 @@ class App extends React.Component {
       blogService
         .remove(id)
         .then(response => {
-          console.log(response.status)
           this.setState({
             blogs: this.state.blogs.filter(blog => blog._id !== id),
             message: `removed '${blog.title}' by ${blog.author}` 
@@ -132,6 +131,7 @@ class App extends React.Component {
 
       window.localStorage.setItem('loggedBlogAppUser', JSON.stringify(user))
       this.setState({ username: '', password: '', user })
+      blogService.setToken(user.token)
     } catch (exception) {
       this.setState({
         error: 'wrong username or password'
