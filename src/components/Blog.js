@@ -33,16 +33,16 @@ class Blog extends React.Component {
     }
 
     return(
-      <div className="blog">
-      <ul>
-        <div onClick={this.toggleDetailed}>
-          <li><strong>{blog.author}:</strong> {blog.title}</li>
-        </div>
-        <li>{blog.url}</li>
-        <li>{blog.likes} likes <button onClick={ e => this.props.onLike(blog._id) }>like</button></li>
-        <li>added by {username}</li>
-        {this.showRemoveButton()}
-      </ul>
+      <div className="blog-detailed">
+        <ul>
+          <div onClick={this.toggleDetailed}>
+            <li><strong>{blog.author}:</strong> {blog.title}</li>
+          </div>
+          <li>{blog.url}</li>
+          <li>{blog.likes} likes <button onClick={ e => this.props.onLike(blog._id) }>like</button></li>
+          <li>added by {username}</li>
+          {this.showRemoveButton()}
+        </ul>
       </div>
     )
   }
@@ -50,9 +50,9 @@ class Blog extends React.Component {
 
 Blog.propTypes = {
   blog: PropTypes.object.isRequired,
-  onLike: PropTypes.func.isRequired,
-  onRemove: PropTypes.func.isRequired,
-  user: PropTypes.string.isRequired
+  onLike: PropTypes.func,
+  onRemove: PropTypes.func,
+  user: PropTypes.string
 }
 
 export default Blog
